@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071612">
+  <title>Liga Alef — Matchday</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Liga Alef home"><span class="brand-mark">LA</span><span class="brand-copy">ISRAEL FOOTBALL<span>LEAGUE ALEF · SOUTH</span></span></a>
+      <div class="match-label"><span class="live-dot"></span><span id="matchStatus">MATCHDAY 08</span><i></i><span>RAMAT GAN STADIUM</span></div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+
+    <section class="scoreboard" aria-label="Match scoreboard">
+      <div class="club-block home-block"><div class="club-crest crest-home"><span>KG</span></div><div class="club-info"><span class="club-label">HOME</span><strong>S.C. KIRYAT GAT</strong></div></div>
+      <div class="score-center"><div class="league-pill"><span class="star">✦</span> LIGA ALEF · SOUTH <span class="star">✦</span></div><div class="scoreline"><span id="homeScore">0</span><span class="score-dash">:</span><span id="awayScore">0</span></div><div class="match-clock"><span class="clock-dot"></span><span id="clock">00:00</span><span class="half-label">1ST HALF</span></div></div>
+      <div class="club-block away-block"><div class="club-info"><span class="club-label">AWAY</span><strong>MACCABI SHA'ARAYIM</strong></div><div class="club-crest crest-away"><span>MS</span></div></div>
+      <div class="weather"><span>☀</span><div><b>26°</b><small>RAMAT GAN</small></div></div>
+    </section>
+
+    <section class="match-layout">
+      <div class="pitch-column">
+        <div class="pitch-frame" id="pitchFrame">
+          <canvas id="game" aria-label="Playable football pitch"></canvas>
+          <div class="game-overlay" id="overlay">
+            <div class="overlay-card" id="overlayCard">
+              <div class="overlay-kicker"><span class="tiny-star">✦</span> ISRAEL · LIGA ALEF <span class="tiny-star">✦</span></div>
+              <h1 id="overlayTitle">THE ROAD<br><em>TO PROMOTION</em></h1>
+              <p id="overlayText">Every point matters. Make your mark on matchday.</p>
+              <button class="primary-button" id="startButton"><span> KICK OFF</span><b>→</b></button>
+              <div class="overlay-foot"><span>90 MINUTES · ONE BIG CHANCE</span><span class="keycap">SPACE</span> SHOOT</div>
+            </div>
+          </div>
+          <div class="goal-flash" id="goalFlash"><span>GOAL!</span><small id="goalCaption">KIRYAT GAT</small></div>
+          <div class="pitch-corner-tag"><span class="live-dot"></span> LIVE</div>
+          <div class="mobile-controls" id="mobileControls">
+            <div class="joystick" id="joystick"><div class="joy-knob" id="joyKnob"></div><span class="joy-n">+</span></div>
+            <div class="action-pad"><button class="action-btn pass-btn" data-action="pass"><span>PASS</span><b>J</b></button><button class="action-btn shoot-btn" data-action="shoot"><span>SHOOT</span><b>●</b></button><button class="action-btn tackle-btn" data-action="tackle"><span>TACKLE</span><b>K</b></button></div>
+          </div>
+          <div class="pause-badge" id="pauseBadge">Ⅱ &nbsp; PAUSED</div>
+        </div>
+        <div class="pitch-caption"><div><span class="caption-line"></span><b>THE ALEF ARENA</b><span>·</span><span>RAMAT GAN, ISRAEL</span></div><div class="caption-right"><span>WASD</span> MOVE <span>·</span> <span>SHIFT</span> SPRINT <span>·</span> <span>SPACE</span> SHOOT</div></div>
+      </div>
+      <aside class="side-panel">
+        <section class="panel-card form-card"><div class="panel-heading"><span>THE FIXTURE</span><span class="panel-index">01 / 03</span></div><div class="fixture-date">SATURDAY, 15:00 <span>·</span> MATCHWEEK 08</div><div class="fixture-row"><div class="mini-crest home-mini">KG</div><div class="fixture-name"><b>S.C. KIRYAT GAT</b><small>HOME · 8TH</small></div><div class="form-dots"><i class="win">W</i><i class="draw">D</i><i class="loss">L</i></div></div><div class="fixture-row"><div class="mini-crest away-mini">MS</div><div class="fixture-name"><b>MACCABI SHA'ARAYIM</b><small>AWAY · 5TH</small></div><div class="form-dots"><i class="win">W</i><i class="win">W</i><i class="draw">D</i></div></div><div class="fixture-note"><span>✦</span> THREE POINTS COULD CHANGE EVERYTHING</div></section>
+        <section class="panel-card objective-card"><div class="panel-heading"><span>MATCH OBJECTIVE</span><span class="objective-icon">◎</span></div><h2>Bring it<br>home.</h2><p>You're leading the line for Kiryat Gat. Find space, create chances, and take all three points.</p><div class="objective-stats"><div><span id="shotsStat">00</span><small>SHOTS</small></div><i></i><div><span id="possessionStat">50%</span><small>POSSESSION</small></div><i></i><div><span id="tacklesStat">00</span><small>TACKLES</small></div></div></section>
+        <section class="panel-card table-card"><div class="panel-heading"><span>LEAGUE TABLE</span><button id="tableToggle">FULL TABLE ↗</button></div><div class="table-head"><span>POS / CLUB</span><span>PTS</span></div><div class="table-row"><span><b>1</b> Hapoel Marmorek</span><strong>17</strong></div><div class="table-row"><span><b>2</b> Hapoel Herzliya</span><strong>15</strong></div><div class="table-row"><span><b>3</b> Holon Yermiyahu</span><strong>14</strong></div><div class="table-row you-row"><span><b>8</b> S.C. Kiryat Gat <i>YOU</i></span><strong>9</strong></div><div class="table-row"><span><b>5</b> Maccabi Sha'arayim</span><strong>12</strong></div></section>
+      </aside>
+    </section>
+
+    <footer class="bottom-bar"><div class="match-tip"><span class="tip-icon">✦</span><div><b>TOUCHLINE TIP</b><span id="tipText">Build from the back. A well-timed pass beats a crowded midfield.</span></div></div><div class="controls-legend"><button id="pauseButton" aria-label="Pause match">Ⅱ</button><span>PAUSE</span><i></i><span class="keycap">J</span><span>PASS</span><i></i><span class="keycap">K</span><span>TACKLE</span><i></i><span class="keycap">SHIFT</span><span>SPRINT</span></div></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
